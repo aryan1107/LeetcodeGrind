@@ -8,13 +8,10 @@ class Solution:
         sentinel = ListNode(0)
         sentinel.next = head
         prev, curr = sentinel, head
-        
         while curr:
             if curr.val == val:
-                prev.next = curr.next
+                prev.next = prev.next.next
             else:
                 prev = prev.next
             curr = curr.next
         return sentinel.next
-        
-           
