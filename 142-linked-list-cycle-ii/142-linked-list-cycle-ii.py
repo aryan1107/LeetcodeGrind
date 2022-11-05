@@ -6,30 +6,19 @@
 
 class Solution:
     def detectCycle(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        def detect(head):
-            slow,fast = head, head
-
-            while fast != None and fast.next != None:
-                
-                slow = slow.next
-                fast = fast.next.next
-                if fast == slow:
-                    return fast
-            return None
-        
-        if head is None:
+        slow = fast = head
+        curr = head
+        if not head:
             return head
-        intersect = detect(head)
-        if intersect is None:
-            return None
-        pt1,pt2 = head, intersect
-        
-        while pt1 != pt2:
-            pt1 = pt1.next
-            pt2 = pt2.next
-        return pt2
-        
-        
-
-        
-        
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
+            if slow == fast:
+                intercept = slow
+                if intercept is None:
+                    return intercept
+                while curr != intercept:
+                    curr = curr.next
+                    intercept = intercept.next
+                return curr
+        return None
