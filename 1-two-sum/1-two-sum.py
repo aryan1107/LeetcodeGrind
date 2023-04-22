@@ -3,6 +3,7 @@ class Solution:
         hm = {}
         for j,i in enumerate(nums):
             diff = target - i
-            if diff in hm:
-                return [hm[diff], j]
-            hm[i] = j
+            if target - i in hm:
+                return [hm[diff],j]
+            hm[i]=j
+        
